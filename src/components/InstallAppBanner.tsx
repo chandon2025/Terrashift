@@ -87,3 +87,4 @@ export const InstallAppBanner: React.FC = () => {
     </div>
   );
 };
+
