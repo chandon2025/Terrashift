@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terrablend-green: #2E7D32;
+  --color-terrablend-green-light: #4CAF50;
+  --color-terrablend-green-dark: #1B5E20;
+  --color-terrablend-brown: #4E342E;
+  --color-terrablend-nasablue: #0B3D91;
+  --color-terrablend-amber: #FF8F00;
+  --color-terrablend-bg: #F4F7F4;
+  --font-bengali: "Noto Sans Bengali", sans-serif;
+  --font-sans: Inter, Roboto, sans-serif;
+}
+
+body {
+  font-family: Inter, Roboto, sans-serif;
+  background-color: #F4F7F4;
+  color: #1a241a;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 100vh;
+}
+
+[lang="bn"] {
+  font-family: "Noto Sans Bengali", sans-serif;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c2d1c2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ab49a;
+}
+
+/* Leaflet map container */
+.leaflet-container {
+  font-family: inherit;
+  border-radius: 1rem;
+  z-index: 10;
+}
