@@ -221,3 +221,4 @@ export const Screen12CompareStrategies: React.FC = () => {
     </div>
   );
 };
+

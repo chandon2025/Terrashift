@@ -14,3 +14,4 @@ export const DisclaimerBanner: React.FC<{ compact?: boolean }> = ({ compact = fa
     </div>
   );
 };
+

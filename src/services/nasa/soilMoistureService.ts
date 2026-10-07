@@ -30,3 +30,4 @@ export async function getSoilMoisture(
     throw new Error(err.message || 'NASA data is currently unavailable.');
   }
 }
+

@@ -177,3 +177,4 @@ export const Screen11RotationDetails: React.FC = () => {
     </div>
   );
 };
+

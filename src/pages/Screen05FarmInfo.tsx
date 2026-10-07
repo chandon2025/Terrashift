@@ -278,3 +278,4 @@ export const Screen05FarmInfo: React.FC = () => {
     </div>
   );
 };
+

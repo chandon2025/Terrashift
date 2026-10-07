@@ -29,3 +29,4 @@ export async function getLandSurfaceTemperature(
     throw new Error(err.message || 'NASA data is currently unavailable.');
   }
 }
+

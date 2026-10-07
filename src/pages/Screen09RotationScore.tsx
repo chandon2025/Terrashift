@@ -195,3 +195,4 @@ export const Screen09RotationScore: React.FC = () => {
     </div>
   );
 };
+

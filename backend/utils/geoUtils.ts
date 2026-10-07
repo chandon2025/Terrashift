@@ -34,3 +34,4 @@ export function formatCoordinates(lat: number, lon: number): { lat: number; lon:
     lon: Number(lon.toFixed(4)),
   };
 }
+

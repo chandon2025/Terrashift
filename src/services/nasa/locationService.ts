@@ -100,3 +100,4 @@ export function searchBangladeshLocations(query: string): LocationInfo[] {
   // Deduplicate and limit to 10 results
   return results.slice(0, 10);
 }
+

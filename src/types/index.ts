@@ -200,3 +200,4 @@ export type AppScreen =
   | 'strategy_compare'
   | 'final_summary'
   | 'profile_settings';
+

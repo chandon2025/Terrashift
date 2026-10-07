@@ -285,3 +285,4 @@ export const Screen04Location: React.FC = () => {
     </div>
   );
 };
+

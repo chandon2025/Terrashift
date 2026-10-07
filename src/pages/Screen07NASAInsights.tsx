@@ -239,3 +239,4 @@ export const Screen07NASAInsights: React.FC = () => {
     </div>
   );
 };
+

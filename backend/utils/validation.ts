@@ -56,3 +56,4 @@ export function sanitizeDateParam(dateStr?: string): string {
   today.setDate(today.getDate() - 3);
   return today.toISOString().slice(0, 10).replace(/-/g, '');
 }
+

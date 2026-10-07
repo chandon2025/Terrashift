@@ -144,3 +144,4 @@ export const Screen03Onboarding: React.FC = () => {
     </div>
   );
 };
+

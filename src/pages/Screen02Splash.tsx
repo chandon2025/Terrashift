@@ -73,3 +73,4 @@ export const Screen02Splash: React.FC = () => {
     </div>
   );
 };
+

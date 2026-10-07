@@ -121,3 +121,4 @@ export const ScoreMethodologyModal: React.FC<ScoreMethodologyModalProps> = ({ is
     </div>
   );
 };
+
