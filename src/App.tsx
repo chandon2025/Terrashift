@@ -2,6 +2,7 @@ import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
 import { Navbar } from './components/Navbar';
 import { BottomNav } from './components/BottomNav';
+import { InstallAppBanner } from './components/InstallAppBanner';
 
 // All 13 Screens
 import { Screen01Language } from './pages/Screen01Language';
@@ -30,6 +31,7 @@ const MainRouter: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F4F7F4] flex flex-col justify-between font-sans">
       <Navbar />
+      <InstallAppBanner />
 
       <main className="flex-1 w-full">
         {currentScreen === 'location' && <Screen04Location />}
@@ -59,4 +61,3 @@ export function App() {
 }
 
 export default App;
-

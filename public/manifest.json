@@ -1,0 +1,19 @@
+{
+  "name": "🌱 TerraShift | Space Data to Smarter Farming",
+  "short_name": "TerraShift",
+  "description": "Bangladesh agricultural decision-support mobile application using official NASA Earth Observation data.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F7F4",
+  "theme_color": "#2E7D32",
+  "categories": ["agriculture", "weather", "productivity"],
+  "icons": [
+    {
+      "src": "/leaf-satellite.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

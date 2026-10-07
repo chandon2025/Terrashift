@@ -1,6 +1,7 @@
-// Bangladesh Location Service
+// Bangladesh Location Service with Native Mobile GPS & Browser Geolocation
 import { LocationInfo } from '../../types';
 import { BANGLADESH_DISTRICTS, findNearestDistrict, buildLocationInfo } from '../../data/bangladeshGeo';
+import { Geolocation } from '@capacitor/geolocation';
 
 export const BANGLADESH_BOUNDS = {
   minLat: 20.57,
@@ -35,36 +36,46 @@ export function validateBangladeshCoordinates(lat: number, lon: number): { isVal
 }
 
 /**
- * Obtains current browser location if granted, strictly verifying Bangladesh boundaries.
+ * Obtains current device location using native Capacitor GPS or browser Geolocation,
+ * strictly verifying Bangladesh boundaries.
  */
 export async function getDeviceLocation(): Promise<LocationInfo> {
-  return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) {
-      reject(new Error('Geolocation is not supported by your browser.'));
-      return;
+  let latitude: number | null = null;
+  let longitude: number | null = null;
+
+  try {
+    // Try native mobile GPS first (Capacitor Geolocation)
+    const position = await Geolocation.getCurrentPosition({
+      enableHighAccuracy: true,
+      timeout: 8000,
+    });
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+  } catch {
+    // Fallback to browser geolocation
+    if (navigator.geolocation) {
+      const browserPos: GeolocationPosition = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, {
+          timeout: 10000,
+          enableHighAccuracy: true,
+        });
+      });
+      latitude = browserPos.coords.latitude;
+      longitude = browserPos.coords.longitude;
     }
+  }
 
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const { latitude, longitude } = pos.coords;
-        if (!isWithinBangladesh(latitude, longitude)) {
-          reject(
-            new Error(
-              `Device location (${latitude.toFixed(4)}, ${longitude.toFixed(4)}) is outside Bangladesh. Please select a Bangladesh location from the map or district list.`
-            )
-          );
-          return;
-        }
+  if (latitude === null || longitude === null) {
+    throw new Error('Unable to retrieve device GPS location. Please check location permissions.');
+  }
 
-        const loc = buildLocationInfo(latitude, longitude, { en: 'My Current Location', bn: 'আমার বর্তমান অবস্থান' });
-        resolve(loc);
-      },
-      (err) => {
-        reject(new Error(err.message || 'Unable to retrieve device location.'));
-      },
-      { timeout: 10000, enableHighAccuracy: true }
+  if (!isWithinBangladesh(latitude, longitude)) {
+    throw new Error(
+      `Device location (${latitude.toFixed(4)}, ${longitude.toFixed(4)}) is outside Bangladesh boundaries. Please select a Bangladesh location from the map or district list.`
     );
-  });
+  }
+
+  return buildLocationInfo(latitude, longitude, { en: 'My Current Location (GPS)', bn: 'আমার বর্তমান অবস্থান (জিপিএস)' });
 }
 
 /**
@@ -100,4 +111,3 @@ export function searchBangladeshLocations(query: string): LocationInfo[] {
   // Deduplicate and limit to 10 results
   return results.slice(0, 10);
 }
-

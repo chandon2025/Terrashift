@@ -277,13 +277,25 @@ Compiles the frontend assets into `dist/`:
 npm run build
 ```
 
-### 6. Run the Standalone Full-Stack Server
-Starts the full-stack server serving the production build:
+### 7. Run as a Native Mobile Android App (Capacitor)
+TerraShift includes a full native **Android Studio project** in the `/android` directory:
+
 ```bash
-npm start
+# Build the web bundle and sync native Android project assets
+npm run build:mobile
+
+# Open directly in Android Studio to build APK or run on device/emulator
+npm run open:android
 ```
-Access the application at: `http://localhost:3001`  
-Check backend system health at: `http://localhost:3001/api/health`
+In Android Studio:
+- Select **Build > Build Bundle(s) / APK(s) > Build APK(s)** to generate the installable Android `.apk`.
+- Or click **Run 'app'** to launch directly on a connected Android phone or Android Virtual Device (AVD).
+
+### 8. Run as a Progressive Web App (PWA / Home Screen App)
+TerraShift includes a Web App Manifest (`manifest.json`) and Service Worker (`sw.js`).
+- Open `http://localhost:3001` or your deployed URL on any mobile browser (Chrome/Edge/Safari).
+- Tap the **"Install Mobile App"** button at the top, or select **Menu > "Install App" / "Add to Home Screen"**.
+- TerraShift launches full-screen in standalone native app mode without browser URL bars!
 
 ---
 

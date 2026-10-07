@@ -1,18 +1,24 @@
 {
   "name": "terrashift",
   "version": "1.0.0",
-  "description": "🌱 TerraShift - From Space Data to Smarter Farming Decisions | NASA Space Apps Challenge 2026",
+  "description": "🌱 TerraShift - Mobile Agricultural Decision-Support App | NASA Space Apps Challenge 2026",
   "type": "module",
   "scripts": {
     "dev": "concurrently -k \"npm run server\" \"npm run client\"",
     "client": "vite",
     "server": "tsx backend/server.ts",
     "build": "vite build",
+    "build:mobile": "vite build && cap sync android",
+    "open:android": "cap open android",
+    "run:android": "cap run android",
     "preview": "vite preview",
     "start": "tsx backend/server.ts"
   },
   "keywords": [
     "nasa-space-apps",
+    "mobile-app",
+    "android",
+    "capacitor",
     "earth-observation",
     "bangladesh-agriculture",
     "crop-rotation",
@@ -23,6 +29,12 @@
   "author": "TerraShift Team",
   "license": "MIT",
   "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/geolocation": "^8.2.3",
+    "@capacitor/status-bar": "^8.0.4",
     "clsx": "^2.1.1",
     "cors": "^2.8.6",
     "dotenv": "^18.0.6",
